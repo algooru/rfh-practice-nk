@@ -1,5 +1,5 @@
-import '@/styles/globals.css';
-import '@/styles/skeleton.css';
+import '../styles/globals.css';
+import '../styles/skeleton.css';
 
 export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
