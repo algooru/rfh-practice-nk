@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
-import ErrorMessage from '@/components/error';
+import ErrorMessage from '../components/error';
 
 // 🟢 Use these regex patterns.
 const regex = {
