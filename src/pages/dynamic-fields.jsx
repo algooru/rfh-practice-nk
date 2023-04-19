@@ -33,7 +33,7 @@ const NestedObjects = () => {
 
   return (
     <div>
-      <h5>Dynamic Fields</h5>
+      <h5>Array Values</h5>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="">
           <input
@@ -87,34 +87,19 @@ const NestedObjects = () => {
         {/* Addresses */}
         <div className="">
           <h6 className="mb-1">Address</h6>
-          {fields.map((field, index) => {
-            return (
-              <div className="space-y-4" key={field.id}>
-                <select
-                  {...register(`addressList.${index}.type`, { required: true })}
-                  defaultValue="primary"
-                >
-                  <option value="primary">Primary</option>
-                  <option value="secondary">Secondary</option>
-                </select>
-                <textarea
-                  {...register(`addressList.${index}.address`, {
-                    required: true,
-                  })}
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Address"
-                ></textarea>
-              </div>
-            );
-          })}
-          <button
-            type="button"
-            onClick={() => append({ type: '', address: '' })}
-          >
-            Add
-          </button>
+          <div className="space-y-4">
+            <select defaultValue="primary">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+            </select>
+            <textarea
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Address"
+            ></textarea>
+          </div>
+          <button type="button">Add</button>
           <hr className="my-3" />
         </div>
 
@@ -133,17 +118,17 @@ export default NestedObjects;
         name: "jhon doe",
         email: "jhondoe@gmail.com",
         phone: ["9809786787", '9898384783],
-        addressList:[
+        addresses:[
             {
-            type: 'primary',
+            type: 'primary address',
             address: '4th block jaynagar 560045'
             },
            {
-            type: 'secondary',
+            type: 'secondary address',
             address: '3rd T block malleshwaram 560015'
             }
         ]
     }
 */
 
-// 🔴 Note that addressList is a is a nested object.
+// 🔴 Note the social is a nested object.
