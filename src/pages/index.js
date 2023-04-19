@@ -9,7 +9,7 @@ export default function Home() {
     <main className="">
       <h1 className="text-5xl">Welcome! 🎊</h1>
       <div className="flex flex-col">
-        <Link href="/nexted-object">
+        <Link href="/nested-object">
           <span className="">1. Nested Object 👈</span>
         </Link>
         <Link href="/array">
