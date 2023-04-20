@@ -15,7 +15,7 @@ const user = {
 // Please console the results
 
 const Ex1 = () => {
-  return <h6>Ex1 - Ex1</h6>;
+  return <h6>Schema Validation - Ex1</h6>;
 };
 
 export default Ex1;
