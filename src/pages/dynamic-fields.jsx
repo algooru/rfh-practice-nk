@@ -18,13 +18,9 @@ const NestedObjects = () => {
     control,
     getValues,
     formState: { errors },
-  } = useForm({});
+  } = useForm();
 
-  const { fields, append } = useFieldArray({
-    control,
-    name: 'addressList',
-    required: true,
-  });
+  const { fields, append } = useFieldArray({ name: 'addressList', control });
 
   const onSubmit = (formValues) => {
     console.log(formValues, 'formValues');
@@ -87,19 +83,37 @@ const NestedObjects = () => {
         {/* Addresses */}
         <div className="">
           <h6 className="mb-1">Address</h6>
-          <div className="space-y-4">
-            <select defaultValue="primary">
-              <option value="primary">Primary</option>
-              <option value="secondary">Secondary</option>
-            </select>
-            <textarea
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Address"
-            ></textarea>
-          </div>
-          <button type="button">Add</button>
+          {fields.map((field, index) => {
+            return (
+              <div className="space-y-4" key={field.id}>
+                <select
+                  defaultValue="primary"
+                  {...register(`addressList.${index}.type`, {
+                    required: { value: true, message: 'is a req field' },
+                  })}
+                >
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                </select>
+                <textarea
+                  {...register(`addressList.${index}.address`, {
+                    required: { value: true, message: 'is a req field' },
+                  })}
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="Address"
+                ></textarea>
+              </div>
+            );
+          })}
+
+          <button
+            type="button"
+            onClick={() => append({ type: '', address: '' })}
+          >
+            Add
+          </button>
           <hr className="my-3" />
         </div>
 
@@ -118,7 +132,7 @@ export default NestedObjects;
         name: "jhon doe",
         email: "jhondoe@gmail.com",
         phone: ["9809786787", '9898384783],
-        addresses:[
+        addressList:[
             {
             type: 'primary address',
             address: '4th block jaynagar 560045'
